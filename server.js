@@ -7,12 +7,14 @@ const PORT = 5000;
 const authRouter = require("./routes/authRoute");
 const cors = require("cors");
 const { notFound, errorHandler } = require("./middleware/errorHandler");
+const cookieParser = require('cookie-parser')
 
 dbConnect();
 
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use("/api/user", authRouter);
 
